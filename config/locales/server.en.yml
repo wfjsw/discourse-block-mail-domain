@@ -1,0 +1,3 @@
+en:
+  site_settings:
+    email_domains_delivery_disabled: "Mail will not be delivered in these domains"

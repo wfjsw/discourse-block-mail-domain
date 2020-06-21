@@ -1,0 +1,5 @@
+email:
+  email_domains_delivery_disabled:
+    default: 'localhost'
+    client: false
+    type: list
