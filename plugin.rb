@@ -14,7 +14,7 @@ module PluginBlockMailDomainEmailSenderFilter
     end
     
     def send
-        disabled_domains = SiteSetting.email_domains_delivery_disabled.split("|")
+        disabled_domains = SiteSetting.email_domains_delivery_disabled
         return skip(SkippedEmailLog.reason_types[:sender_message_to_invalid]) if email_in_restriction_setting(disabled_domains, to_address)
         super
     end
