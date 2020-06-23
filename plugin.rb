@@ -5,6 +5,7 @@
 # url: https://github.com/wfjsw/discourse-block-mail-domain
 
 enabled_site_setting :email_domains_delivery_disabled
+enabled_site_setting :suppress_disabled_email_domain_skip_log
 
 module PluginBlockMailDomainEmailSenderFilter 
     def email_in_restriction_setting(setting, value)
@@ -15,7 +16,13 @@ module PluginBlockMailDomainEmailSenderFilter
     
     def send
         disabled_domains = SiteSetting.email_domains_delivery_disabled
-        return skip(SkippedEmailLog.reason_types[:sender_message_to_invalid]) if email_in_restriction_setting(disabled_domains, to_address)
+        if email_in_restriction_setting(disabled_domains, to_address) 
+            if SiteSetting.suppress_disabled_email_domain_skip_log 
+                return
+            else
+                return skip(SkippedEmailLog.reason_types[:sender_message_to_invalid])
+            end
+        end
         super
     end
 end

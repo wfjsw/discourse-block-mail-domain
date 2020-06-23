@@ -1,3 +1,4 @@
 en:
   site_settings:
-    email_domains_delivery_disabled: "Mail will not be delivered in these domains"
+    email_domains_delivery_disabled: "Mail will not be delivered to these domains"
+    suppress_disabled_email_domain_skip_log: "Suppress skip log caused by disabled domains"

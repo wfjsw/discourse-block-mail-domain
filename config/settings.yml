@@ -3,3 +3,6 @@ email:
     default: 'localhost'
     client: false
     type: list
+  suppress_disabled_email_domain_skip_log:
+    default: false
+    client: false
